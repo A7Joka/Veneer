@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,184 +8,442 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body{font-family:'Tajawal',sans-serif;background:#0d1117;color:#e5e7eb;scroll-behavior:smooth;overflow-x:hidden;}
-    ::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-track{background:#161b22;}::-webkit-scrollbar-thumb{background:#facc15;border-radius:4px;}
-    .fade{opacity:0;transform:translateY(30px);transition:0.8s ease;} .fade.visible{opacity:1;transform:translateY(0);}
-    header{position:fixed;top:0;width:100%;z-index:100;padding:1rem 3rem;transition:0.4s;background:transparent;display:flex;align-items:center;justify-content:space-between;}
-    header.scrolled{background:rgba(22,27,34,0.95);backdrop-filter:blur(8px);box-shadow:0 2px 10px rgba(0,0,0,0.4);}
-    header nav a{padding:0.5rem 1rem;border-radius:6px;transition:0.3s;} header nav a:hover{background:#facc15;color:#000;}
-    .hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
-    .hero video{position:absolute;width:100%;height:100%;object-fit:cover;top:0;left:0;filter:brightness(0.4);} 
-    .hero-content{position:relative;z-index:2;max-width:700px;}
-    .section-title{text-align:center;font-size:2rem;font-weight:bold;margin-bottom:2rem;position:relative;}
-    .section-title::after{content:'';width:80px;height:4px;background:#facc15;display:block;margin:0.5rem auto;border-radius:2px;}
-    .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:1000;}
-    .modal-content{background:#1f2937;padding:20px;max-width:500px;width:90%;border-radius:15px;text-align:right;position:relative;}
-    .modal-content button.close{position:absolute;top:10px;left:10px;font-size:18px;}
-    .cart-modal{background:#161b22;padding:20px;border-radius:20px;max-width:500px;width:90%;text-align:right;animation:fadeIn 0.4s ease;}
-    @keyframes fadeIn{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
-    .feature-item{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
-    .feature-item i{color:#facc15;}
-    #scrollTop{position:fixed;bottom:20px;left:20px;background:#facc15;color:#000;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;display:none;}
-    footer{background:linear-gradient(90deg,#0d1117,#161b22);}
-    .tab.active {background: #facc15;color: #000 !important;}
-    @media(max-width:768px){.section-title{font-size:1.5rem;}.hero h1{font-size:2rem;}}
-    @keyframes slideDown {from {opacity:0;transform:translateY(-10px);}to {opacity:1;transform:translateY(0);}}
-    .animate-slideDown {animation: slideDown 0.3s ease forwards;}
-    #beforeafter .container {scroll-snap-type: x mandatory;}
-    #beforeafter .container > div {scroll-snap-align: center;}
-    footer {text-align: center;}
-    footer .container {flex-direction: column;}
-    @media(min-width:768px){footer .container {flex-direction: row;text-align: right;}}
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #0d1117;
+      color: #e5e7eb;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #161b22;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #facc15;
+      border-radius: 4px;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.8s ease;
+    }
+
+    .fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1rem 3rem;
+      transition: 0.4s;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header.scrolled {
+      background: rgba(22, 27, 34, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    header nav a {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    header nav a:hover {
+      background: #facc15;
+      color: #000;
+    }
+
+    .hero {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      filter: brightness(0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      background: #facc15;
+      display: block;
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #1f2937;
+      padding: 20px;
+      max-width: 500px;
+      width: 90%;
+      border-radius: 15px;
+      text-align: right;
+      position: relative;
+    }
+
+    .modal-content button.close {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 18px;
+    }
+
+    .cart-modal {
+      background: #161b22;
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 500px;
+      width: 90%;
+      text-align: right;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .feature-item i {
+      color: #facc15;
+    }
+
+    #scrollTop {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #facc15;
+      color: #000;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      display: none;
+    }
+
+    footer {
+      background: linear-gradient(90deg, #0d1117, #161b22);
+    }
+
+    .tab.active {
+      background: #facc15;
+      color: #000 !important;
+    }
+
+    @media(max-width:768px) {
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-slideDown {
+      animation: slideDown 0.3s ease forwards;
+    }
+
+    #beforeafter .container {
+      scroll-snap-type: x mandatory;
+    }
+
+    #beforeafter .container>div {
+      scroll-snap-align: center;
+    }
+
+    footer {
+      text-align: center;
+    }
+
+    footer .container {
+      flex-direction: column;
+    }
+
+    @media(min-width:768px) {
+      footer .container {
+        flex-direction: row;
+        text-align: right;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-<!-- Loader -->
-<div id="loader" class="fixed inset-0 bg-[#0d1117] flex items-center justify-center z-[9999]">
-  <div class="w-12 h-12 border-4 border-yellow-500 border-t-transparent rounded-full animate-spin"></div>
-</div>
-<script>window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').style.display='none',1500)});</script>
+  <!-- Loader -->
+  <div id="loader" class="fixed inset-0 bg-[#0d1117] flex items-center justify-center z-[9999]">
+    <div class="w-12 h-12 border-4 border-yellow-500 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+  <script>window.addEventListener('load', () => { setTimeout(() => document.getElementById('loader').style.display = 'none', 1500) });</script>
 
-<!-- Enhanced Header -->
-<header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-[#0d1117]/90 bg-transparent transition duration-300">
-  <div class="container mx-auto flex justify-between items-center py-4 px-6">
-    <!-- Logo -->
-    <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-      <img src="logo.svg" class="w-10 h-10">
-      <span class="font-bold text-xl text-white">Veneer</span>
+  <!-- Enhanced Header -->
+  <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 bg-[#0d1117]/90 bg-transparent transition duration-300">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <!-- Logo -->
+      <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+        <img src="logo.svg" class="w-10 h-10">
+        <span class="font-bold text-xl text-white">Veneer</span>
+      </div>
+      <!-- Nav Links -->
+      <nav class="hidden md:flex gap-2 text-sm ">
+        <a href="#about" class="transition"><i class="fas fa-user"></i> من نحن</a>
+        <a href="#products" class="transition"><i class="fas fa-box"></i> المنتجات</a>
+        <a href="#pricing" class="transition"><i class="fas fa-tags"></i> الأسعار</a>
+        <a href="#clinic" class="transition"><i class="fas fa-calendar-check"></i> الحجز</a>
+        <a href="#contact" class="transition"><i class="fas fa-envelope"></i> تواصل</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-4">
+        <!-- Cart Button -->
+        <button onclick="toggleCart()" class="relative">
+          <i class="fas fa-shopping-cart text-yellow-500 text-xl"></i>
+          <span id="cartCount"
+            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+        </button>
+        <!-- Mobile Menu -->
+        <button class="md:hidden" onclick="toggleMenu()">
+          <i class="fas fa-bars text-yellow-500 text-xl"></i>
+        </button>
+      </div>
     </div>
-    <!-- Nav Links -->
-    <nav class="hidden md:flex gap-2 text-sm ">
-      <a href="#about" class="transition"><i class="fas fa-user"></i> من نحن</a>
-      <a href="#products" class="transition"><i class="fas fa-box"></i> المنتجات</a>
-      <a href="#pricing" class="transition"><i class="fas fa-tags"></i> الأسعار</a>
-      <a href="#clinic" class="transition"><i class="fas fa-calendar-check"></i> الحجز</a>
-      <a href="#contact" class="transition"><i class="fas fa-envelope"></i> تواصل</a>
-    </nav>
-    
-    <!-- Actions -->
-    <div class="flex items-center gap-4">
-      <!-- Cart Button -->
-      <button onclick="toggleCart()" class="relative">
-        <i class="fas fa-shopping-cart text-yellow-500 text-xl"></i>
-        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
-      </button>
-      <!-- Mobile Menu -->
-      <button class="md:hidden" onclick="toggleMenu()">
-        <i class="fas fa-bars text-yellow-500 text-xl"></i>
-      </button>
+    <!-- Mobile Nav -->
+    <div id="mobileMenu"
+      class="hidden absolute top-full left-0 w-full bg-[#161b22] md:hidden px-6 py-6 space-y-4 shadow-lg border-t border-yellow-500">
+      <a href="#about"
+        class="block py-3 px-4 rounded hover:bg-yellow-500 hover:text-black text-white text-lg text-center">من نحن</a>
+      <a href="#products"
+        class="block py-3 px-4 rounded hover:bg-yellow-500 hover:text-black text-white text-lg text-center">المنتجات</a>
+      <a href="#pricing"
+        class="block py-3 px-4 rounded hover:bg-yellow-500 hover:text-black text-white text-lg text-center">الأسعار</a>
+      <a href="#clinic"
+        class="block py-3 px-4 rounded hover:bg-yellow-500 hover:text-black text-white text-lg text-center">الحجز</a>
+      <a href="#contact"
+        class="block py-3 px-4 rounded hover:bg-yellow-500 hover:text-black text-white text-lg text-center">تواصل</a>
     </div>
-  </div>
-  <!-- Mobile Nav -->
-  <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-[#161b22] md:hidden px-6 py-6 space-y-4 shadow-lg border-t border-yellow-500">
-    <a href="#about" class="block py-3 px-4 rounded hover:bg-yellow-500 hover:text-black text-white text-lg text-center">من نحن</a>
-    <a href="#products" class="block py-3 px-4 rounded hover:bg-yellow-500 hover:text-black text-white text-lg text-center">المنتجات</a>
-    <a href="#pricing" class="block py-3 px-4 rounded hover:bg-yellow-500 hover:text-black text-white text-lg text-center">الأسعار</a>
-    <a href="#clinic" class="block py-3 px-4 rounded hover:bg-yellow-500 hover:text-black text-white text-lg text-center">الحجز</a>
-    <a href="#contact" class="block py-3 px-4 rounded hover:bg-yellow-500 hover:text-black text-white text-lg text-center">تواصل</a>
-  </div>
-</header>
-<script>
-    window.addEventListener('scroll',()=>{
-  const header = document.getElementById('mainHeader');
-  if(window.scrollY > 50){
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-});
+  </header>
+  <script>
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('mainHeader');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
 
-      function toggleMenu(){
-    const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('hidden');
-    if(!menu.classList.contains('hidden')){
-      menu.classList.add('animate-slideDown');
-      const links = menu.querySelectorAll('a');
-      links.forEach(link => {
-        link.addEventListener('click', () => menu.classList.add('hidden'));
-      });
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+      if (!menu.classList.contains('hidden')) {
+        menu.classList.add('animate-slideDown');
+        const links = menu.querySelectorAll('a');
+        links.forEach(link => {
+          link.addEventListener('click', () => menu.classList.add('hidden'));
+        });
+      }
     }
-  }
-  // Responsive Cart Counter Example
-  let cartItems = [];
-  function updateCartCounter(){
-    document.getElementById('cartCount').textContent = cartItems.length;
-  }
-
-  // Responsive adjustments
-  function adjustForScreen(){
-    const vw = window.innerWidth;
-    if(vw < 768){
-      document.body.classList.add('mobile-view');
-    } else {
-      document.body.classList.remove('mobile-view');
+    // Responsive Cart Counter Example
+    let cartItems = [];
+    function updateCartCounter() {
+      document.getElementById('cartCount').textContent = cartItems.length;
     }
-  }
-  window.addEventListener('resize',adjustForScreen);
-  adjustForScreen();
-    function toggleMenu(){
-    const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('hidden');
-    if(!menu.classList.contains('hidden')){
-      menu.classList.add('animate-slideDown');
+
+    // Responsive adjustments
+    function adjustForScreen() {
+      const vw = window.innerWidth;
+      if (vw < 768) {
+        document.body.classList.add('mobile-view');
+      } else {
+        document.body.classList.remove('mobile-view');
+      }
     }
-  }
-</script>
+    window.addEventListener('resize', adjustForScreen);
+    adjustForScreen();
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+      if (!menu.classList.contains('hidden')) {
+        menu.classList.add('animate-slideDown');
+      }
+    }
+  </script>
 
-<!-- Hero -->
-<section class="hero">
-  <video autoplay muted loop>
-    <source src="hero.mp4" type="video/mp4">
-  </video>
-  <div class="hero-content fade">
-    <img src="logo.svg" class="w-24 mx-auto mb-4 hover:scale-110 transition">
-    <h1 class="text-5xl font-extrabold mb-4">Veneer Dental Store</h1>
-    <p class="text-lg mb-6">ابتسامة مثالية بخدمات ومنتجات متكاملة</p>
-    <a href="#clinic" class="px-6 py-3 bg-yellow-500 text-black rounded shadow hover:bg-yellow-400">احجز الآن</a>
-  </div>
-</section>
+  <!-- Hero -->
+  <section class="hero">
+    <video autoplay muted loop>
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content fade">
+      <img src="logo.svg" class="w-24 mx-auto mb-4 hover:scale-110 transition">
+      <h1 class="text-5xl font-extrabold mb-4">Veneer Dental Store</h1>
+      <p class="text-lg mb-6">ابتسامة مثالية بخدمات ومنتجات متكاملة</p>
+      <a href="#clinic" class="px-6 py-3 bg-yellow-500 text-black rounded shadow hover:bg-yellow-400">احجز الآن</a>
+    </div>
+  </section>
 
- <!-- About Us -->
-<section id="about" class="py-20 bg-[#161b22]">
+  <!-- About Us -->
+  <section id="about" class="py-20 bg-[#161b22]">
     <h2 class="section-title fade">من نحن</h2>
-    <div class="container mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
-      <div class="md:w-1/2 fade">
-        <p class="text-lg leading-relaxed mb-4">نحن فريق طبي متخصص في طب الأسنان التجميلي والعلاجي، نستخدم أحدث التقنيات لتقديم أفضل النتائج لابتسامة صحية وجميلة.</p>
-        <ul class="list-disc pr-6 text-gray-400">
-          <li>فريق طبي معتمد بخبرة عالمية</li>
-          <li>أحدث التقنيات والأجهزة</li>
-          <li>خدمات مخصصة لكل احتياج</li>
+    <div class="container mx-auto grid md:grid-cols-2 gap-10 px-6 items-center">
+
+      <!-- النصوص -->
+      <div class="text-right">
+        <p class="text-lg text-gray-300 leading-relaxed mb-4">
+          فينير دنتال ستور هو متجر وعيادة متكاملة لطب الأسنان،
+          نوفر كل ما تحتاجه من منتجات طبية عالية الجودة، وخدمات علاجية وتجميلية باحترافية وخبرة طويلة.
+        </p>
+
+        <ul class="space-y-2 text-gray-400 text-sm mb-6">
+          <li><i class="fas fa-check text-yellow-500"></i> متجر شامل للأدوات والمستلزمات الطبية</li>
+          <li><i class="fas fa-check text-yellow-500"></i> خدمات علاجية وتجميلية متقدمة للمرضى</li>
+          <li><i class="fas fa-check text-yellow-500"></i> دعم واستشارات للأطباء والعيادات</li>
+          <li><i class="fas fa-check text-yellow-500"></i> توصيل سريع وخيارات استبدال مرنة</li>
         </ul>
+
+        <!-- CTA -->
+        <div class="flex flex-wrap gap-4">
+          <a href="#products" class="bg-yellow-500 text-black px-6 py-2 rounded hover:bg-yellow-400 transition">
+            تصفح منتجاتنا
+          </a>
+          <a href="#clinic"
+            class="border border-yellow-500 text-yellow-500 px-6 py-2 rounded hover:bg-yellow-500 hover:text-black transition">
+            احجز موعدك
+          </a>
+        </div>
       </div>
-      <div class="md:w-1/2 relative fade">
-        <img src="clinic1.jpg" class="w-full h-64 object-cover rounded shadow-lg">
+
+      <!-- الصورة + الإحصائيات -->
+      <div class="relative">
+        <img src="clinic1.jpg" class="w-full h-80 object-cover rounded shadow-lg">
+
+        <!-- الإحصائيات -->
+        <div class="absolute bottom-0 left-0 right-0 bg-black/50 grid grid-cols-3 text-center py-4 rounded-b">
+          <div>
+            <p class="text-yellow-400 text-2xl font-bold">+500</p>
+            <span class="text-sm text-gray-300">عميل سعيد</span>
+          </div>
+          <div>
+            <p class="text-yellow-400 text-2xl font-bold">+300</p>
+            <span class="text-sm text-gray-300">منتج طبي</span>
+          </div>
+          <div>
+            <p class="text-yellow-400 text-2xl font-bold">+10</p>
+            <span class="text-sm text-gray-300">سنوات خبرة</span>
+          </div>
+        </div>
       </div>
     </div>
-</section>
+  </section>
+
   <section id="services" class="py-20 bg-[#0d1117]">
     <h2 class="section-title fade">خدماتنا السريعة</h2>
     <div class="container mx-auto grid md:grid-cols-4 gap-6 px-6">
-    <div class="bg-[#1f2937] p-6 rounded text-center hover:scale-105 transition">
-      <i class="fas fa-store text-yellow-500 text-3xl mb-2"></i>
-      <h3 class="text-xl font-bold mb-1">متجر المنتجات</h3>
-      <p class="text-gray-400 text-sm">نوفر كل الأدوات والمستلزمات الطبية</p>
-    </div>
-    <div class="bg-[#1f2937] p-6 rounded text-center hover:scale-105 transition">
-      <i class="fas fa-truck text-yellow-500 text-3xl mb-2"></i>
-      <h3 class="text-xl font-bold mb-1">توصيل سريع</h3>
-      <p class="text-gray-400 text-sm">توصيل موثوق لكل الطلبات الطبية</p>
-    </div>
-    <div class="bg-[#1f2937] p-6 rounded text-center hover:scale-105 transition">
-      <i class="fas fa-headset text-yellow-500 text-3xl mb-2"></i>
-      <h3 class="text-xl font-bold mb-1">دعم فني واستشارات</h3>
-      <p class="text-gray-400 text-sm">خدمة عملاء واستشارات متخصصة</p>
-    </div>
-    <div class="bg-[#1f2937] p-6 rounded text-center hover:scale-105 transition">
-      <i class="fas fa-sync text-yellow-500 text-3xl mb-2"></i>
-      <h3 class="text-xl font-bold mb-1">استبدال واسترجاع</h3>
-      <p class="text-gray-400 text-sm">سياسة مرنة لاستبدال أو إرجاع المنتجات</p>
-    </div>
+      <div class="bg-[#1f2937] p-6 rounded text-center hover:scale-105 transition">
+        <i class="fas fa-store text-yellow-500 text-3xl mb-2"></i>
+        <h3 class="text-xl font-bold mb-1">متجر المنتجات</h3>
+        <p class="text-gray-400 text-sm">نوفر كل الأدوات والمستلزمات الطبية</p>
+      </div>
+      <div class="bg-[#1f2937] p-6 rounded text-center hover:scale-105 transition">
+        <i class="fas fa-truck text-yellow-500 text-3xl mb-2"></i>
+        <h3 class="text-xl font-bold mb-1">توصيل سريع</h3>
+        <p class="text-gray-400 text-sm">توصيل موثوق لكل الطلبات الطبية</p>
+      </div>
+      <div class="bg-[#1f2937] p-6 rounded text-center hover:scale-105 transition">
+        <i class="fas fa-headset text-yellow-500 text-3xl mb-2"></i>
+        <h3 class="text-xl font-bold mb-1">دعم فني واستشارات</h3>
+        <p class="text-gray-400 text-sm">خدمة عملاء واستشارات متخصصة</p>
+      </div>
+      <div class="bg-[#1f2937] p-6 rounded text-center hover:scale-105 transition">
+        <i class="fas fa-sync text-yellow-500 text-3xl mb-2"></i>
+        <h3 class="text-xl font-bold mb-1">استبدال واسترجاع</h3>
+        <p class="text-gray-400 text-sm">سياسة مرنة لاستبدال أو إرجاع المنتجات</p>
+      </div>
       <div class="bg-[#1f2937] p-6 rounded text-center hover:scale-105 transition">
         <i class="fas fa-tooth text-yellow-500 text-3xl mb-2"></i>
         <h3 class="text-xl font-bold mb-1">تنظيف وتلميع</h3>
@@ -208,188 +467,208 @@
     </div>
   </section>
 
-<!-- Products -->
-<section id="products" class="py-20 bg-[#161b22]">
- <h2 class="section-title fade">منتجاتنا</h2>
-  <div class="text-center mb-8">
-    <div class="inline-flex bg-[#0d1117] rounded overflow-x-auto">
-      <button class="tab px-4 py-2 text-white hover:bg-yellow-500 hover:text-black" onclick="filterProducts('all')">الكل</button>
-      <button class="tab px-4 py-2 text-white hover:bg-yellow-500 hover:text-black" onclick="filterProducts('doctors')">للأطباء</button>
-      <button class="tab px-4 py-2 text-white hover:bg-yellow-500 hover:text-black" onclick="filterProducts('clinic')">لعيادات الأسنان</button>
-      <button class="tab px-4 py-2 text-white hover:bg-yellow-500 hover:text-black" onclick="filterProducts('students')">لطلاب الأسنان</button>
-      <button class="tab px-4 py-2 text-white hover:bg-yellow-500 hover:text-black" onclick="filterProducts('consumables')">مواد استهلاكية</button>
-    </div>
-  </div>
-  <div id="productGrid" class="container mx-auto grid md:grid-cols-3 gap-8 px-6"></div>
-</section>
-
-<!-- Product Modal -->
-<div id="productModal" class="modal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <button onclick="closeModal()" class="close text-white">✕</button>
-    <div class="relative mb-4">
-      <img id="modalImg" class="w-full h-64 object-cover rounded mb-2">
-      <div class="flex justify-between">
-        <button onclick="prevImage()" class="px-3 py-1 bg-black/50 rounded-full"><i class="fas fa-chevron-right"></i></button>
-        <button onclick="nextImage()" class="px-3 py-1 bg-black/50 rounded-full"><i class="fas fa-chevron-left"></i></button>
+  <!-- Products -->
+  <section id="products" class="py-20 bg-[#161b22]">
+    <h2 class="section-title fade">منتجاتنا</h2>
+    <div class="text-center mb-8">
+      <div class="inline-flex bg-[#0d1117] rounded overflow-x-auto">
+        <button class="tab px-4 py-2 text-white hover:bg-yellow-500 hover:text-black"
+          onclick="filterProducts('all')">الكل</button>
+        <button class="tab px-4 py-2 text-white hover:bg-yellow-500 hover:text-black"
+          onclick="filterProducts('doctors')">للأطباء</button>
+        <button class="tab px-4 py-2 text-white hover:bg-yellow-500 hover:text-black"
+          onclick="filterProducts('clinic')">لعيادات الأسنان</button>
+        <button class="tab px-4 py-2 text-white hover:bg-yellow-500 hover:text-black"
+          onclick="filterProducts('students')">لطلاب الأسنان</button>
+        <button class="tab px-4 py-2 text-white hover:bg-yellow-500 hover:text-black"
+          onclick="filterProducts('consumables')">مواد استهلاكية</button>
+        <button class="tab px-4 py-2 text-white hover:bg-yellow-500 hover:text-black"
+          onclick="filterProducts('personal')">عناية شخصية</button>
       </div>
     </div>
-    <h3 id="modalTitle" class="text-2xl font-bold mt-2"></h3>
-    <p id="modalDesc" class="mt-2 text-sm text-gray-300"></p>
-    <p id="modalCats" class="text-sm text-yellow-400 mt-1"></p>
-    <p id="modalPrice" class="text-xl text-yellow-500 mt-3 font-bold"></p>
-    <button onclick="addToCart(currentProduct)" class="w-full mt-4 py-2 bg-yellow-500 text-black rounded">أضف للسلة</button>
-  </div>
-</div>
+    <div id="productGrid" class="container mx-auto grid md:grid-cols-3 gap-8 px-6"></div>
+  </section>
 
-<!-- Cart Popup -->
-<div id="cartModal" class="modal" onclick="closeCart()">
-  <div class="cart-modal" onclick="event.stopPropagation()">
-    <h3 class="text-xl font-bold mb-4">سلة المشتريات</h3>
-    <div id="cartItems" class="space-y-2 max-h-[50vh] overflow-y-auto"></div>
-    <p class="mt-4">الإجمالي: <span id="cartTotal">0</span> EGP</p>
-    <div class="flex gap-2 mt-4">
-      <button onclick="openCheckout()" class="flex-1 py-2 bg-green-500 rounded">إتمام الشراء</button>
-      <button onclick="closeCart()" class="flex-1 py-2 bg-red-500 rounded">إغلاق</button>
-    </div>
-  </div>
-</div>
-
-<!-- Checkout Modal -->
-<div id="checkoutModal" class="modal" onclick="closeCheckout()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="close" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
-    <h3 class="text-xl font-bold mb-4">بيانات الطلب</h3>
-    <input id="cName" placeholder="الاسم" class="w-full p-2 mb-2 bg-[#161b22] text-white">
-    <input id="cPhone" placeholder="رقم الهاتف" class="w-full p-2 mb-2 bg-[#161b22] text-white">
-    <input id="cAddress" placeholder="العنوان" class="w-full p-2 mb-2 bg-[#161b22] text-white">
-    <textarea id="cNotes" placeholder="ملاحظات" class="w-full p-2 mb-2 bg-[#161b22] text-white"></textarea>
-    <button onclick="sendWhatsAppOrder()" class="w-full py-2 bg-green-500 text-white rounded">إرسال واتساب</button>
-  </div>
-</div>
-
-<!-- Before/After -->
-<section id="beforeafter" class="py-20 bg-[#0d1117]">
-  <h2 class="section-title fade">قبل وبعد</h2>
-  <div class="container mx-auto flex gap-4 overflow-x-auto snap-x px-4 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible">
-    <div class="min-w-[80%] md:min-w-0 bg-[#161b22] p-4 rounded snap-center">
-      <img src="before1.jpg" class="w-full rounded mb-3">
-      <p class="text-gray-300 text-sm text-center">ترميم شامل + وصف</p>
-    </div>
-    <div class="min-w-[80%] md:min-w-0 bg-[#161b22] p-4 rounded snap-center">
-      <img src="before2.jpg" class="w-full rounded mb-3">
-      <p class="text-gray-300 text-sm text-center">عدسات تجميلية + وصف</p>
-    </div>
-    <div class="min-w-[80%] md:min-w-0 bg-[#161b22] p-4 rounded snap-center">
-      <img src="before3.jpg" class="w-full rounded mb-3">
-      <p class="text-gray-300 text-sm text-center">تقويم الأسنان + وصف</p>
-    </div>
-  </div>
-</section>
-
-<!-- Reviews -->
-<section id="reviews" class="py-20 bg-[#161b22]">
-  <h2 class="section-title fade">آراء العملاء</h2>
-  <div class="container mx-auto grid md:grid-cols-3 gap-6 px-6">
-    <div class="bg-[#1f2937] p-6 rounded hover:scale-105 transition text-center">
-      <i class="fas fa-user-circle text-yellow-500 text-4xl mb-3"></i>
-      <p class="italic mb-2">“خدمة رائعة ونتائج مذهلة، شكراً لفريق فينير!”</p>
-      <span class="text-gray-400 text-sm">سارة - القاهرة</span>
-    </div>
-    <div class="bg-[#1f2937] p-6 rounded hover:scale-105 transition text-center">
-      <i class="fas fa-user-circle text-yellow-500 text-4xl mb-3"></i>
-      <p class="italic mb-2">“أفضل متجر وخدمات للأسنان بأسعار مناسبة جداً”</p>
-      <span class="text-gray-400 text-sm">محمد - الإسكندرية</span>
-    </div>
-    <div class="bg-[#1f2937] p-6 rounded hover:scale-105 transition text-center">
-      <i class="fas fa-user-circle text-yellow-500 text-4xl mb-3"></i>
-      <p class="italic mb-2">“احترافية وجودة عالية جداً، أنصح الجميع بالتجربة”</p>
-      <span class="text-gray-400 text-sm">ليلى - الجيزة</span>
-    </div>
-  </div>
-</section>
-
-<!-- Clinic Booking Section -->
-<section id="clinic" class="py-20 bg-[#0d1117]">
-  <div class="container mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
-    <!-- Right CTA -->
-    <div class="md:w-1/2 text-right">
-      <h2 class="text-3xl font-bold mb-4 section-title fade">حجز كشف العيادة</h2>
-      <p class="text-gray-300 mb-6">اختر نوع الزيارة وحدد اليوم والوقت المناسب، وسنكون جاهزين لاستقبالك بأفضل رعاية.</p>
-      <div style="display: grid;justify-content: center;"><button onclick="openClinicForm()" class="px-6 py-3 bg-yellow-500 text-black rounded shadow hover:bg-yellow-400 transition">احجز الآن</button></div>
-    </div>
-    <!-- Left Video -->
-    <div class="md:w-1/2">
-      <video autoplay muted loop class="w-full h-64 object-cover rounded shadow-lg">
-        <source src="clinic-tour.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</section>
-
-<!-- Clinic Booking Modal -->
-<div id="clinicModal" class="modal" onclick="closeClinicForm()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <button onclick="closeClinicForm()" class="close text-white">✕</button>
-    <h3 class="text-xl font-bold mb-4">حجز كشف العيادة</h3>
-    <label class="block mb-2">نوع الزيارة:</label>
-    <select id="visitType" class="w-full p-2 mb-3 bg-[#161b22] text-white">
-      <option>كشف جديد</option>
-      <option>متابعة</option>
-    </select>
-    <label class="block mb-2">اختر اليوم:</label>
-    <select id="visitDay" class="w-full p-2 mb-3 bg-[#161b22] text-white" onchange="loadTimes()">
-      <option value="">-- اختر --</option>
-      <option value="sat">السبت</option>
-      <option value="sun">الأحد</option>
-      <option value="mon">الإثنين</option>
-    </select>
-    <label class="block mb-2">اختر الوقت:</label>
-    <select id="visitTime" class="w-full p-2 mb-3 bg-[#161b22] text-white"></select>
-    <input id="pName" placeholder="الاسم" class="w-full p-2 mb-3 bg-[#161b22] text-white">
-    <input id="pPhone" placeholder="رقم الهاتف" class="w-full p-2 mb-3 bg-[#161b22] text-white">
-    <textarea id="visitReason" placeholder="سبب الزيارة أو المشكلة" class="w-full p-2 mb-3 bg-[#161b22] text-white"></textarea>
-    <textarea id="followDetails" placeholder="تفاصيل إضافية (إذا كانت تعاني من شيء من اثار الجلسة السابقة او تريد توضيح شيء)" class="w-full p-2 mb-3 bg-[#161b22] text-white hidden"></textarea>
-    <button onclick="saveClinicBooking()" class="w-full py-2 bg-green-500 text-white rounded">تأكيد الحجز</button>
-  </div>
-</div>
-
-<!-- Pricing -->
-<section id="pricing" class="py-20 bg-[#161b22]">
-  <h2 class="section-title fade">الخدمات</h2>
-  <div class="container mx-auto grid md:grid-cols-3 gap-8 px-6">
-    <div class="bg-[#0d1117] p-6 rounded hover:scale-105 transition">
-      <h3 class="text-xl font-bold text-center mb-2">جلسة تبييض</h3>
-      <div class="mb-2">
-        <div class="feature-item"><i class="fas fa-check"></i> تنظيف شامل</div>
-        <div class="feature-item"><i class="fas fa-check"></i> تبييض احترافي</div>
+  <!-- Product Modal -->
+  <div id="productModal" class="modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button onclick="closeModal()" class="close text-white">✕</button>
+      <div class="relative mb-4">
+        <img id="modalImg" class="w-full h-64 object-cover rounded mb-2">
+        <div class="flex justify-between">
+          <button onclick="prevImage()" class="px-3 py-1 bg-black/50 rounded-full"><i
+              class="fas fa-chevron-right"></i></button>
+          <button onclick="nextImage()" class="px-3 py-1 bg-black/50 rounded-full"><i
+              class="fas fa-chevron-left"></i></button>
+        </div>
       </div>
-      <p class="text-3xl text-yellow-500 font-extrabold mb-4">1500 EGP</p>
-      <a href="https://wa.me/201234567890" target="_blank" class="block text-center py-2 bg-yellow-500 text-black rounded">احجز واتساب</a>
-    </div>
-    <div class="bg-[#0d1117] p-6 rounded hover:scale-105 transition">
-      <h3 class="text-xl font-bold text-center mb-2">عدسات الأسنان</h3>
-      <div class="mb-2">
-        <div class="feature-item"><i class="fas fa-check"></i> استشارة وتصميم</div>
-        <div class="feature-item"><i class="fas fa-check"></i> تركيب عدسات عالية الجودة</div>
-      </div>
-      <p class="text-3xl text-yellow-500 font-extrabold mb-4">2500 EGP</p>
-      <a href="https://wa.me/201234567890" target="_blank" class="block text-center py-2 bg-yellow-500 text-black rounded">احجز واتساب</a>
-    </div>
-    <div class="bg-[#0d1117] p-6 rounded hover:scale-105 transition">
-      <h3 class="text-xl font-bold text-center mb-2">ريتينر شفاف</h3>
-      <div class="mb-2">
-        <div class="feature-item"><i class="fas fa-check"></i> تصميم مخصص</div>
-        <div class="feature-item"><i class="fas fa-check"></i> ضمان جودة 6 شهور</div>
-      </div>
-      <p class="text-3xl text-yellow-500 font-extrabold mb-4">1200 EGP</p>
-      <a href="https://wa.me/201234567890" target="_blank" class="block text-center py-2 bg-yellow-500 text-black rounded">احجز واتساب</a>
+      <h3 id="modalTitle" class="text-2xl font-bold mt-2"></h3>
+      <p id="modalDesc" class="mt-2 text-sm text-gray-300"></p>
+      <p id="modalCats" class="text-sm text-yellow-400 mt-1"></p>
+      <p id="modalPrice" class="text-xl text-yellow-500 mt-3 font-bold"></p>
+      <button onclick="addToCart(currentProduct)" class="w-full mt-4 py-2 bg-yellow-500 text-black rounded">أضف
+        للسلة</button>
     </div>
   </div>
-</section>
 
-<!-- Contact -->
- <section id="contact" class="py-20 bg-[#0d1117]">
+  <!-- Cart Popup -->
+  <div id="cartModal" class="modal" onclick="closeCart()">
+    <div class="cart-modal" onclick="event.stopPropagation()">
+      <h3 class="text-xl font-bold mb-4">سلة المشتريات</h3>
+      <div id="cartItems" class="space-y-2 max-h-[50vh] overflow-y-auto"></div>
+      <p class="mt-4">الإجمالي: <span id="cartTotal">0</span> EGP</p>
+      <div class="flex gap-2 mt-4">
+        <button onclick="openCheckout()" class="flex-1 py-2 bg-green-500 rounded">إتمام الشراء</button>
+        <button onclick="closeCart()" class="flex-1 py-2 bg-red-500 rounded">إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkoutModal" class="modal" onclick="closeCheckout()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
+      <h3 class="text-xl font-bold mb-4">بيانات الطلب</h3>
+      <input id="cName" placeholder="الاسم" class="w-full p-2 mb-2 bg-[#161b22] text-white">
+      <input id="cPhone" placeholder="رقم الهاتف" class="w-full p-2 mb-2 bg-[#161b22] text-white">
+      <input id="cAddress" placeholder="العنوان" class="w-full p-2 mb-2 bg-[#161b22] text-white">
+      <textarea id="cNotes" placeholder="ملاحظات" class="w-full p-2 mb-2 bg-[#161b22] text-white"></textarea>
+      <button onclick="sendWhatsAppOrder()" class="w-full py-2 bg-green-500 text-white rounded">إرسال واتساب</button>
+    </div>
+  </div>
+
+  <!-- Before/After -->
+  <section id="beforeafter" class="py-20 bg-[#0d1117]">
+    <h2 class="section-title fade">قبل وبعد</h2>
+    <div
+      class="container mx-auto flex gap-4 overflow-x-auto snap-x px-4 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible">
+      <div class="min-w-[80%] md:min-w-0 bg-[#161b22] p-4 rounded snap-center">
+        <img src="before1.jpg" class="w-full rounded mb-3">
+        <p class="text-gray-300 text-sm text-center">ترميم شامل + وصف</p>
+      </div>
+      <div class="min-w-[80%] md:min-w-0 bg-[#161b22] p-4 rounded snap-center">
+        <img src="before2.jpg" class="w-full rounded mb-3">
+        <p class="text-gray-300 text-sm text-center">عدسات تجميلية + وصف</p>
+      </div>
+      <div class="min-w-[80%] md:min-w-0 bg-[#161b22] p-4 rounded snap-center">
+        <img src="before3.jpg" class="w-full rounded mb-3">
+        <p class="text-gray-300 text-sm text-center">تقويم الأسنان + وصف</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="py-20 bg-[#161b22]">
+    <h2 class="section-title fade">آراء العملاء</h2>
+    <div class="container mx-auto grid md:grid-cols-3 gap-6 px-6">
+      <div class="bg-[#1f2937] p-6 rounded hover:scale-105 transition text-center">
+        <i class="fas fa-user-circle text-yellow-500 text-4xl mb-3"></i>
+        <p class="italic mb-2">“خدمة رائعة ونتائج مذهلة، شكراً لفريق فينير!”</p>
+        <span class="text-gray-400 text-sm">سارة - القاهرة</span>
+      </div>
+      <div class="bg-[#1f2937] p-6 rounded hover:scale-105 transition text-center">
+        <i class="fas fa-user-circle text-yellow-500 text-4xl mb-3"></i>
+        <p class="italic mb-2">“أفضل متجر وخدمات للأسنان بأسعار مناسبة جداً”</p>
+        <span class="text-gray-400 text-sm">محمد - الإسكندرية</span>
+      </div>
+      <div class="bg-[#1f2937] p-6 rounded hover:scale-105 transition text-center">
+        <i class="fas fa-user-circle text-yellow-500 text-4xl mb-3"></i>
+        <p class="italic mb-2">“احترافية وجودة عالية جداً، أنصح الجميع بالتجربة”</p>
+        <span class="text-gray-400 text-sm">ليلى - الجيزة</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinic Booking Section -->
+  <section id="clinic" class="py-20 bg-[#0d1117]">
+    <div class="container mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
+      <!-- Right CTA -->
+      <div class="md:w-1/2 text-right">
+        <h2 class="text-3xl font-bold mb-4 section-title fade">حجز كشف العيادة</h2>
+        <p class="text-gray-300 mb-6">اختر نوع الزيارة وحدد اليوم والوقت المناسب، وسنكون جاهزين لاستقبالك بأفضل رعاية.
+        </p>
+        <div style="display: grid;justify-content: center;"><button onclick="openClinicForm()"
+            class="px-6 py-3 bg-yellow-500 text-black rounded shadow hover:bg-yellow-400 transition">احجز الآن</button>
+        </div>
+      </div>
+      <!-- Left Video -->
+      <div class="md:w-1/2">
+        <video autoplay muted loop class="w-full h-64 object-cover rounded shadow-lg">
+          <source src="clinic-tour.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinic Booking Modal -->
+  <div id="clinicModal" class="modal" onclick="closeClinicForm()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button onclick="closeClinicForm()" class="close text-white">✕</button>
+      <h3 class="text-xl font-bold mb-4">حجز كشف العيادة</h3>
+      <label class="block mb-2">نوع الزيارة:</label>
+      <select id="visitType" class="w-full p-2 mb-3 bg-[#161b22] text-white">
+        <option>كشف جديد</option>
+        <option>متابعة</option>
+      </select>
+      <label class="block mb-2">اختر اليوم:</label>
+      <select id="visitDay" class="w-full p-2 mb-3 bg-[#161b22] text-white" onchange="loadTimes()">
+        <option value="">-- اختر --</option>
+        <option value="sat">السبت</option>
+        <option value="sun">الأحد</option>
+        <option value="mon">الإثنين</option>
+      </select>
+      <label class="block mb-2">اختر الوقت:</label>
+      <select id="visitTime" class="w-full p-2 mb-3 bg-[#161b22] text-white"></select>
+      <input id="pName" placeholder="الاسم" class="w-full p-2 mb-3 bg-[#161b22] text-white">
+      <input id="pPhone" placeholder="رقم الهاتف" class="w-full p-2 mb-3 bg-[#161b22] text-white">
+      <textarea id="visitReason" placeholder="سبب الزيارة أو المشكلة"
+        class="w-full p-2 mb-3 bg-[#161b22] text-white"></textarea>
+      <textarea id="followDetails"
+        placeholder="تفاصيل إضافية (إذا كانت تعاني من شيء من اثار الجلسة السابقة او تريد توضيح شيء)"
+        class="w-full p-2 mb-3 bg-[#161b22] text-white hidden"></textarea>
+      <button onclick="saveClinicBooking()" class="w-full py-2 bg-green-500 text-white rounded">تأكيد الحجز</button>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-20 bg-[#161b22]">
+    <h2 class="section-title fade">الخدمات</h2>
+    <div class="container mx-auto grid md:grid-cols-3 gap-8 px-6">
+      <div class="bg-[#0d1117] p-6 rounded hover:scale-105 transition">
+        <h3 class="text-xl font-bold text-center mb-2">جلسة تبييض</h3>
+        <div class="mb-2">
+          <div class="feature-item"><i class="fas fa-check"></i> تنظيف شامل</div>
+          <div class="feature-item"><i class="fas fa-check"></i> تبييض احترافي</div>
+        </div>
+        <p class="text-3xl text-yellow-500 font-extrabold mb-4">1500 EGP</p>
+        <a href="https://wa.me/201234567890" target="_blank"
+          class="block text-center py-2 bg-yellow-500 text-black rounded">احجز واتساب</a>
+      </div>
+      <div class="bg-[#0d1117] p-6 rounded hover:scale-105 transition">
+        <h3 class="text-xl font-bold text-center mb-2">عدسات الأسنان</h3>
+        <div class="mb-2">
+          <div class="feature-item"><i class="fas fa-check"></i> استشارة وتصميم</div>
+          <div class="feature-item"><i class="fas fa-check"></i> تركيب عدسات عالية الجودة</div>
+        </div>
+        <p class="text-3xl text-yellow-500 font-extrabold mb-4">2500 EGP</p>
+        <a href="https://wa.me/201234567890" target="_blank"
+          class="block text-center py-2 bg-yellow-500 text-black rounded">احجز واتساب</a>
+      </div>
+      <div class="bg-[#0d1117] p-6 rounded hover:scale-105 transition">
+        <h3 class="text-xl font-bold text-center mb-2">ريتينر شفاف</h3>
+        <div class="mb-2">
+          <div class="feature-item"><i class="fas fa-check"></i> تصميم مخصص</div>
+          <div class="feature-item"><i class="fas fa-check"></i> ضمان جودة 6 شهور</div>
+        </div>
+        <p class="text-3xl text-yellow-500 font-extrabold mb-4">1200 EGP</p>
+        <a href="https://wa.me/201234567890" target="_blank"
+          class="block text-center py-2 bg-yellow-500 text-black rounded">احجز واتساب</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 bg-[#0d1117]">
     <h2 class="section-title fade">تواصل معنا</h2>
     <div class="container mx-auto grid md:grid-cols-2 gap-6 px-6">
       <form class="bg-[#161b22] p-6 rounded space-y-4">
@@ -399,186 +678,257 @@
         <button class="w-full py-2 bg-yellow-500 text-black rounded">إرسال</button>
       </form>
       <div class="contact-card text-right rounded space-y-4">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1304.3707088517406!2d30.802007402037457!3d31.341465391692893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f6fb862b14056f%3A0xcded4d3b9efff923!2z2K_Zhdix2YjYjCDYp9mE2K3Yr9in2K_ZiiDZiNi52LLYqNmH2KfYjCDYs9mK2K_ZiSDYs9in2YTZhdiMINmF2K3Yp9mB2LjYqSDZg9mB2LEg2KfZhNi02YrYrg!5e0!3m2!1sar!2seg!4v1752707344861!5m2!1sar!2seg" class="w-full h-48 mb-4 rounded"></iframe>
-      <div class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-yellow-500"></i><span>القاهرة، مصر</span></div>
-      <div class="flex items-center gap-3"><i class="fas fa-phone text-yellow-500"></i><span>0100000000</span></div>
-      <div class="flex items-center gap-3"><i class="fas fa-envelope text-yellow-500"></i><span>veneer@example.com</span></div>
-      <div class="flex gap-4 mt-4 text-center text-xl" style="justify-content: center;">
-        <a href="https://wa.me/20100000000" class="p-2"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://instagram.com" class="p-2"><i class="fab fa-instagram"></i></a>
-        <a href="https://instagram.com" class="p-2"><i class="fab fa-facebook"></i></a>
-        <a href="mailto:veneer@example.com" class="p-2"><i class="fas fa-envelope"></i></a>
-      </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1304.3707088517406!2d30.802007402037457!3d31.341465391692893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f6fb862b14056f%3A0xcded4d3b9efff923!2z2K_Zhdix2YjYjCDYp9mE2K3Yr9in2K_ZiiDZiNi52LLYqNmH2KfYjCDYs9mK2K_ZiSDYs9in2YTZhdiMINmF2K3Yp9mB2LjYqSDZg9mB2LEg2KfZhNi02YrYrg!5e0!3m2!1sar!2seg!4v1752707344861!5m2!1sar!2seg"
+          class="w-full h-48 mb-4 rounded"></iframe>
+        <div class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-yellow-500"></i><span>القاهرة،
+            مصر</span></div>
+        <div class="flex items-center gap-3"><i class="fas fa-phone text-yellow-500"></i><span>0100000000</span></div>
+        <div class="flex items-center gap-3"><i
+            class="fas fa-envelope text-yellow-500"></i><span>veneer@example.com</span></div>
+        <div class="flex gap-4 mt-4 text-center text-xl" style="justify-content: center;">
+          <a href="https://wa.me/20100000000" class="p-2"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://instagram.com" class="p-2"><i class="fab fa-instagram"></i></a>
+          <a href="https://instagram.com" class="p-2"><i class="fab fa-facebook"></i></a>
+          <a href="mailto:veneer@example.com" class="p-2"><i class="fas fa-envelope"></i></a>
+        </div>
       </div>
     </div>
   </section>
 
-<!-- Footer -->
-<footer class="py-8 bg-black text-gray-400 px-6">
-  <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-right">
-    
-    <!-- الشعار -->
-    <div class="flex flex-col md:flex-row items-center gap-3">
-      <img src="logo.svg" class="w-10 cursor-pointer mb-3 md:mb-0" onclick="window.scrollTo(0,0)">
-      <span>© 2025 جميع الحقوق محفوظة - Veneer Dental Store</span>
-    </div>
-    
-    <!-- الحقوق -->
-    <div class="flex flex-col items-center gap-2">
-      <!-- <span>تابعنا على:</span>
+  <!-- Footer -->
+  <footer class="py-8 bg-black text-gray-400 px-6">
+    <div
+      class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-right">
+
+      <!-- الشعار -->
+      <div class="flex flex-col md:flex-row items-center gap-3">
+        <img src="logo.svg" class="w-10 cursor-pointer mb-3 md:mb-0" onclick="window.scrollTo(0,0)">
+        <span>© 2025 جميع الحقوق محفوظة - Veneer Dental Store</span>
+      </div>
+
+      <!-- الحقوق -->
+      <div class="flex flex-col items-center gap-2">
+        <!-- <span>تابعنا على:</span>
       <div class="flex gap-4 text-xl">
         <a href="#"><i class="fab fa-whatsapp hover:text-green-400"></i></a>
         <a href="#"><i class="fab fa-instagram hover:text-pink-400"></i></a>
         <a href="#"><i class="fab fa-facebook hover:text-blue-400"></i></a>
         <a href="#"><i class="fas fa-envelope hover:text-yellow-400"></i></a>
       </div> -->
-      <span>Designed by 
-        <a href="https://your-portfolio.com" class="hover:text-yellow-500">ENG Abdallah Hussein</a>
-      </span>
+        <span>Designed by
+          <a href="https://your-portfolio.com" class="hover:text-yellow-500">ENG Abdallah Hussein</a>
+        </span>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
 
-<!-- Scroll to top -->
-<div id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+  <!-- Scroll to top -->
+  <div id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
-<script>
-// Scroll animations
-const fades=document.querySelectorAll('.fade');
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.2});
-fades.forEach(el=>obs.observe(el));
+  <script>
+    // Scroll animations
+    const fades = document.querySelectorAll('.fade');
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.2 });
+    fades.forEach(el => obs.observe(el));
 
-// Products
-const products = [
-    {name: "عدسات الأسنان", desc: "عدسات تجميلية فائقة الجودة", price: 2500, cat: ["doctors"], images: ["lens1.jpg", "lens2.jpg"]},
-    {name: "تبييض الأسنان", desc: "جلسات تبييض آمنة وسريعة", price: 1500, cat: ["students"], images: ["white1.jpg"]},
-    {name: "ريتينر شفاف", desc: "حافظ على ابتسامتك المثالية", price: 1200, cat: ["clinic"], images: ["retainer.jpg"]},
-    {name: "مجموعة أدوات", desc: "مجموعة أدوات كاملة لأطباء الأسنان", price: 3200, cat: ["doctors", "clinic"], images: ["tools.jpg"]},
-    {name: "قناع وجه طبي", desc: "قناع وجه عالي الجودة للاستعمال الطبي", price: 100, cat: ["consumables"], images: ["mask.jpg"]}
-  ];
-  let cart = [], currentProduct = null, currentImgIndex = 0;
+    // Products
+    const products = [
+      {
+        "name": "مجموعة أدوات طبيب أسنان",
+        "desc": "مجموعة احترافية تشمل أدوات الفحص والتنظيف",
+        "price": 3200,
+        "cat": ["doctors", "clinic"],
+        "images": ["Veneer.jpg", "Veneer.jpg"]
+      },
+      {
+        "name": "كرسي عيادة أسنان",
+        "desc": "كرسي عالي الجودة مزود بأنظمة تحكم متقدمة",
+        "price": 15000,
+        "cat": ["clinic"],
+        "images": ["Veneer.jpg", "Veneer.jpg"]
+      },
+      {
+        "name": "كتاب مبادئ طب الأسنان",
+        "desc": "مرجع شامل لطلاب كليات الأسنان",
+        "price": 350,
+        "cat": ["students"],
+        "images": ["Veneer.jpg"]
+      },
+      {
+        "name": "قناع وجه طبي",
+        "desc": "قناع وجه آمن للاستعمال الطبي والوقاية",
+        "price": 120,
+        "cat": ["consumables"],
+        "images": ["Veneer.jpg"]
+      },
+      {
+        "name": "فرشاة أسنان كهربائية",
+        "desc": "فرشاة حديثة للعناية الشخصية اليومية",
+        "price": 500,
+        "cat": ["personal"],
+        "images": ["Veneer.jpg"]
+      },
+      {
+        "name": "مادة حشو تجميلي",
+        "desc": "حشو تجميلي عالي الجودة للأسنان الأمامية",
+        "price": 900,
+        "cat": ["doctors", "clinic"],
+        "images": ["Veneer.jpg"]
+      },
+      {
+        "name": "معجون تبييض الأسنان",
+        "desc": "معجون فعال وآمن للاستخدام اليومي",
+        "price": 80,
+        "cat": ["personal", "consumables"],
+        "images": ["Veneer.jpg"]
+      },
+      {
+        "name": "ريتينر شفاف",
+        "desc": "حافظ على ابتسامتك المثالية بعد التقويم",
+        "price": 1200,
+        "cat": ["clinic", "students"],
+        "images": ["Veneer.jpg"]
+      },
+      {
+        "name": "ملقاط جراحي",
+        "desc": "أداة دقيقة لعمليات الأسنان الجراحية",
+        "price": 300,
+        "cat": ["doctors"],
+        "images": ["Veneer.jpg"]
+      },
+      {
+        "name": "جهاز تبييض الأسنان المنزلي",
+        "desc": "تقنية آمنة وسريعة للتبييض المنزلي",
+        "price": 1000,
+        "cat": ["personal"],
+        "images": ["Veneer.jpg"]
+      }
+    ];
+    let cart = [], currentProduct = null, currentImgIndex = 0;
 
-  function openModal(p) {
-    currentProduct = p;
-    currentImgIndex = 0;
-    document.getElementById("modalTitle").textContent = p.name;
-    document.getElementById("modalDesc").textContent = p.desc;
-    document.getElementById("modalCats").textContent = "التصنيفات: " + p.cat.join("، ");
-    document.getElementById("modalPrice").textContent = p.price + " EGP";
-    document.getElementById("modalImg").src = p.images[0];
-    document.getElementById("productModal").style.display = "flex";
-  }
-  function closeModal() {
-    document.getElementById("productModal").style.display = "none";
-  }
-  function nextImage() {
-    if (!currentProduct) return;
-    currentImgIndex = (currentImgIndex + 1) % currentProduct.images.length;
-    document.getElementById("modalImg").src = currentProduct.images[currentImgIndex];
-  }
-  function prevImage() {
-    if (!currentProduct) return;
-    currentImgIndex = (currentImgIndex - 1 + currentProduct.images.length) % currentProduct.images.length;
-    document.getElementById("modalImg").src = currentProduct.images[currentImgIndex];
-  }
-  function addToCart(p) {
-    cart.push(p);
-    updateCart();
-    closeModal();
-    toggleCart();
-  }
-
-  // Load all on start
-  filterProducts();
-function updateCart(){const items=document.getElementById('cartItems');items.innerHTML='';let total=0;cart.forEach((item,i)=>{total+=item.price;const div=document.createElement('div');div.className='flex justify-between items-center bg-[#0d1117] p-2 rounded';div.innerHTML=`<div>${item.name}<br><span class='text-yellow-500'>${item.price} EGP</span></div><button onclick='removeFromCart(${i})' class='text-red-500'>✕</button>`;items.appendChild(div);});document.getElementById('cartTotal').textContent=total;}
-function removeFromCart(i){cart.splice(i,1);updateCart();}
-
-function toggleCart(){document.getElementById('cartModal').style.display='flex';}
-function closeCart(){document.getElementById('cartModal').style.display='none';}
-
-function openCheckout(){closeCart();document.getElementById('checkoutModal').style.display='flex';}
-function closeCheckout(){document.getElementById('checkoutModal').style.display='none';}
-
-function sendWhatsAppOrder(){let name=document.getElementById('cName').value;let phone=document.getElementById('cPhone').value;let address=document.getElementById('cAddress').value;let notes=document.getElementById('cNotes').value;let list=cart.map(c=>`${c.name} (${c.price}EGP)`).join('%0A');let total=cart.reduce((s,c)=>s+c.price,0);let msg=`طلب جديد:%0Aالاسم:${name}%0Aالهاتف:${phone}%0Aالعنوان:${address}%0Aملاحظات:${notes}%0Aالمنتجات:%0A${list}%0Aالإجمالي:${total}EGP`;window.open(`https://wa.me/201234567890?text=${msg}`,'_blank');}
-
-// Clinic Booking
-const availableTimes = {
-    sat: ["10:00 ص", "12:00 م", "3:00 م"],
-    sun: ["11:00 ص", "1:00 م"],
-    mon: ["9:00 ص", "2:00 م"]
-  };
-
-  function openClinicForm(){
-    document.getElementById('clinicModal').style.display='flex';
-  }
-  function closeClinicForm(){
-    document.getElementById('clinicModal').style.display='none';
-  }
-
-  function loadTimes(){
-    let day=document.getElementById('visitDay').value;
-    let visitTime=document.getElementById('visitTime');
-    visitTime.innerHTML='';
-    if(availableTimes[day]){
-      availableTimes[day].forEach(t=>{
-        let opt=document.createElement('option');
-        opt.textContent=t;
-        visitTime.appendChild(opt);
-      });
-    } else {
-      let opt=document.createElement('option');
-      opt.textContent='لا توجد مواعيد';
-      visitTime.appendChild(opt);
+    function openModal(p) {
+      currentProduct = p;
+      currentImgIndex = 0;
+      document.getElementById("modalTitle").textContent = p.name;
+      document.getElementById("modalDesc").textContent = p.desc;
+      document.getElementById("modalCats").textContent = "التصنيفات: " + p.cat.join("، ");
+      document.getElementById("modalPrice").textContent = p.price + " EGP";
+      document.getElementById("modalImg").src = p.images[0];
+      document.getElementById("productModal").style.display = "flex";
     }
-  }
+    function closeModal() {
+      document.getElementById("productModal").style.display = "none";
+    }
+    function nextImage() {
+      if (!currentProduct) return;
+      currentImgIndex = (currentImgIndex + 1) % currentProduct.images.length;
+      document.getElementById("modalImg").src = currentProduct.images[currentImgIndex];
+    }
+    function prevImage() {
+      if (!currentProduct) return;
+      currentImgIndex = (currentImgIndex - 1 + currentProduct.images.length) % currentProduct.images.length;
+      document.getElementById("modalImg").src = currentProduct.images[currentImgIndex];
+    }
+    function addToCart(p) {
+      cart.push(p);
+      updateCart();
+      closeModal();
+      toggleCart();
+    }
 
-  document.getElementById('visitType').addEventListener('change', e => {
-    let isFollow = e.target.value === 'متابعة';
-    document.getElementById('followDetails').classList.toggle('hidden', !isFollow);
-  });
+    // Load all on start
+    filterProducts();
+    function updateCart() { const items = document.getElementById('cartItems'); items.innerHTML = ''; let total = 0; cart.forEach((item, i) => { total += item.price; const div = document.createElement('div'); div.className = 'flex justify-between items-center bg-[#0d1117] p-2 rounded'; div.innerHTML = `<div>${item.name}<br><span class='text-yellow-500'>${item.price} EGP</span></div><button onclick='removeFromCart(${i})' class='text-red-500'>✕</button>`; items.appendChild(div); }); document.getElementById('cartTotal').textContent = total; }
+    function removeFromCart(i) { cart.splice(i, 1); updateCart(); }
 
-  function saveClinicBooking(){
-    const booking={
-      visitType:document.getElementById('visitType').value,
-      day:document.getElementById('visitDay').value,
-      time:document.getElementById('visitTime').value,
-      name:document.getElementById('pName').value,
-      phone:document.getElementById('pPhone').value,
-      reason:document.getElementById('visitReason').value,
-      followDetails:document.getElementById('followDetails').value
+    function toggleCart() { document.getElementById('cartModal').style.display = 'flex'; }
+    function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
+
+    function openCheckout() { closeCart(); document.getElementById('checkoutModal').style.display = 'flex'; }
+    function closeCheckout() { document.getElementById('checkoutModal').style.display = 'none'; }
+
+    function sendWhatsAppOrder() { let name = document.getElementById('cName').value; let phone = document.getElementById('cPhone').value; let address = document.getElementById('cAddress').value; let notes = document.getElementById('cNotes').value; let list = cart.map(c => `${c.name} (${c.price}EGP)`).join('%0A'); let total = cart.reduce((s, c) => s + c.price, 0); let msg = `طلب جديد:%0Aالاسم:${name}%0Aالهاتف:${phone}%0Aالعنوان:${address}%0Aملاحظات:${notes}%0Aالمنتجات:%0A${list}%0Aالإجمالي:${total}EGP`; window.open(`https://wa.me/201234567890?text=${msg}`, '_blank'); }
+
+    // Clinic Booking
+    const availableTimes = {
+      sat: ["10:00 ص", "12:00 م", "3:00 م"],
+      sun: ["11:00 ص", "1:00 م"],
+      mon: ["9:00 ص", "2:00 م"]
     };
-    console.log('Booking:',booking);
-    alert('تم تأكيد الحجز بنجاح');
-    closeClinicForm();
-  }
-  const tabs = document.querySelectorAll('.tab');
-  function setActiveTab(clicked) {
-    tabs.forEach(tab => tab.classList.remove('active'));
-    clicked.classList.add('active');
-  }
-  function filterProducts(filter = "all") {
-    const grid = document.getElementById("productGrid");
-    grid.innerHTML = '';
-    products.filter(p => filter === "all" || p.cat.includes(filter)).forEach(p => {
-      const card = document.createElement("div");
-      card.className = "bg-[#0d1117] p-4 rounded hover:shadow-xl transition text-right";
-      card.innerHTML = `
+
+    function openClinicForm() {
+      document.getElementById('clinicModal').style.display = 'flex';
+    }
+    function closeClinicForm() {
+      document.getElementById('clinicModal').style.display = 'none';
+    }
+
+    function loadTimes() {
+      let day = document.getElementById('visitDay').value;
+      let visitTime = document.getElementById('visitTime');
+      visitTime.innerHTML = '';
+      if (availableTimes[day]) {
+        availableTimes[day].forEach(t => {
+          let opt = document.createElement('option');
+          opt.textContent = t;
+          visitTime.appendChild(opt);
+        });
+      } else {
+        let opt = document.createElement('option');
+        opt.textContent = 'لا توجد مواعيد';
+        visitTime.appendChild(opt);
+      }
+    }
+
+    document.getElementById('visitType').addEventListener('change', e => {
+      let isFollow = e.target.value === 'متابعة';
+      document.getElementById('followDetails').classList.toggle('hidden', !isFollow);
+    });
+
+    function saveClinicBooking() {
+      const booking = {
+        visitType: document.getElementById('visitType').value,
+        day: document.getElementById('visitDay').value,
+        time: document.getElementById('visitTime').value,
+        name: document.getElementById('pName').value,
+        phone: document.getElementById('pPhone').value,
+        reason: document.getElementById('visitReason').value,
+        followDetails: document.getElementById('followDetails').value
+      };
+      console.log('Booking:', booking);
+      alert('تم تأكيد الحجز بنجاح');
+      closeClinicForm();
+    }
+    const tabs = document.querySelectorAll('.tab');
+    function setActiveTab(clicked) {
+      tabs.forEach(tab => tab.classList.remove('active'));
+      clicked.classList.add('active');
+    }
+    function filterProducts(filter = "all") {
+      const grid = document.getElementById("productGrid");
+      grid.innerHTML = '';
+      products.filter(p => filter === "all" || p.cat.includes(filter)).forEach(p => {
+        const card = document.createElement("div");
+        card.className = "bg-[#0d1117] p-4 rounded hover:shadow-xl transition text-right";
+        card.innerHTML = `
         <img src="${p.images[0]}" class="w-full h-48 object-cover rounded mb-2">
         <h3 class="text-lg font-bold">${p.name}</h3>
         <p class="text-sm text-gray-400">${p.desc}</p>
         <p class="text-yellow-500 font-bold mt-2">${p.price} EGP</p>
         <button class="mt-3 w-full bg-yellow-500 text-black rounded py-2" onclick='openModal(${JSON.stringify(p)})'>تفاصيل</button>`;
-      grid.appendChild(card);
+        grid.appendChild(card);
+      });
+    }
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        setActiveTab(tab);
+      });
     });
-  }
-  tabs.forEach(tab => {
-    tab.addEventListener('click', e => {
-      setActiveTab(tab);
-    });
-  });
-  // make first active initially
-  tabs[0].classList.add('active');
+    // make first active initially
+    tabs[0].classList.add('active');
   </script>
 </body>
+
 </html>
